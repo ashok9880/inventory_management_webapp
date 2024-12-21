@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "LoginPage",
   data() {
@@ -31,9 +32,19 @@ export default {
     };
   },
   methods: {
-    login(e) {
+    async login(e) {
       e.preventDefault()
-      console.log("Login Attempted:", this.username, this.password);
+
+      try {
+        const response = await axios.get("http://localhost:3000/users")
+        const user = response.data.find((u) => u.username === this.username && u.password === this.password)
+
+        console.log(user, "user")
+      }
+      catch (err) {
+        console.error(err)
+      }
+
     },
   },
 };

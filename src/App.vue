@@ -1,17 +1,26 @@
 <template>
-  <login/>
-  <home/>
+  <div> 
+    <login/>
+  </div>
+  
+  <!-- <navBar/>
+  <div class="p-4">
+    <users/>
+  </div> -->
+  
 </template>
 
 <script>
 import login from './components/login.vue'
-import home from './components/home.vue'
+// import navBar from './components/navBar.vue'
+// import users from './components/users.vue'
 
 export default {
   name: 'App',
   components: {
     login,
-    home
+    //navBar,
+    //users
   }
 }
 </script>

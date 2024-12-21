@@ -1,3 +1,80 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-sm {
+    @apply rounded-md py-1 px-2 m-1 hover:bg-none  text-sm w-fit;
+}
+
+/* Table */
+table {
+    @apply border-separate border-spacing-0 w-full rounded-lg;
+}
+
+.table-bordered td,
+.table-bordered th {
+    @apply border-[1px] border-gray-200;
+}
+
+.table-bordered th {
+    @apply p-2;
+}
+
+.table-bordered td {
+    @apply py-1 px-2
+}
+
+.table-bordered th:not(:last-child),
+.table-bordered td:not(:last-child) {
+    @apply border-r-0;
+}
+
+.table-bordered tr:not(:last-child) td,
+.table-bordered th {
+    @apply border-b-0;
+}
+
+.table-bordered tr:first-child th:first-child {
+    @apply rounded-tl-lg;
+}
+
+.table-bordered tr:first-child th:last-child {
+    @apply rounded-tr-lg;
+}
+
+.table-bordered tr:last-child td:first-child {
+    @apply rounded-bl-lg;
+}
+
+.table-bordered tr:last-child td:last-child {
+    @apply rounded-br-lg;
+}
+
+.table-striped tr:nth-child(even) {
+    @apply bg-blue-300;
+}
+
+/* Material Icons */
+.material-icons {
+    @apply text-base leading-[0] align-middle relative -top-[1px];
+}
+
+.mi-xs {
+    @apply text-sm leading-none;        
+}
+
+.mi-sm {
+    @apply text-base leading-none;        
+}
+
+.mi-md {
+    @apply text-lg leading-none;
+}
+
+.mi-lg {
+    @apply text-2xl leading-none;
+}
+
+.mi-xl {
+    @apply text-3xl leading-none;
+}
