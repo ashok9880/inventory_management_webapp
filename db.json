@@ -1,16 +1,26 @@
 {
   "users": [
     {
-      "id": "1",
       "username": "ADMIN",
       "password": "1234",
-      "designation": "MANAGER"
+      "designation": "MANAGER",
+      "id": "149d"
     },
     {
-      "id": "2",
+      "id": "03f4",
+      "designation": "BILL PERSON",
       "username": "BILL PERSON",
-      "password": "1234",
-      "designation": "STAFF"
+      "password": "321"
+    }
+  ],
+  "products": [
+    {
+      "name": "Wireless Mouse",
+      "stock": 100,
+      "price": 250,
+      "sales": 0,
+      "date_added": "2024-01-05",
+      "id": "5838"
     }
   ]
 }

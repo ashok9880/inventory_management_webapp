@@ -31,6 +31,12 @@ export default {
       password: "",
     };
   },
+  mounted() {
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+    if (loggedInUser) {
+      this.$router.push({name: 'ProductsPage'})
+    }
+  },
   methods: {
     async login(e) {
       e.preventDefault()
@@ -40,6 +46,15 @@ export default {
         const user = response.data.find((u) => u.username === this.username && u.password === this.password)
 
         console.log(user, "user")
+
+        if (user) {
+          localStorage.setItem("loggedInUser", JSON.stringify(user))
+          this.$router.push({name: 'ProductsPage'})
+        }
+        else {
+          alert("No user found")
+        }
+        
       }
       catch (err) {
         console.error(err)
