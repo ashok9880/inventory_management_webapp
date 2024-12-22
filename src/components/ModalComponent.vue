@@ -3,7 +3,7 @@
     
     <div class="bg-white h-full shadow-lg flex flex-col" :class="widthClass">
       <!-- Header -->
-      <div class="bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
+      <div class="bg-[#00416ada] text-white px-4 py-3 flex justify-between items-center">
         <slot name="header"></slot>
       </div>
 
@@ -13,7 +13,7 @@
       </div>
 
       <!-- Footer -->
-      <div class="bg-gray-100 px-4 py-3 flex justify-end space-x-4">
+      <div class="bg-gray-200 px-4 py-3 flex justify-end items-center space-x-4">
         <slot name="footer"></slot>
       </div>
     </div>

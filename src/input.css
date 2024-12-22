@@ -6,6 +6,10 @@
     @apply rounded-md py-1 px-2 m-1 hover:bg-none  text-sm w-fit;
 }
 
+.btn-md {
+    @apply rounded-md py-2 px-3 m-1 hover:bg-none text-base w-fit;
+}
+
 /* Table */
 table {
     @apply border-separate border-spacing-0 w-full rounded-lg;
@@ -51,7 +55,7 @@ table {
 }
 
 .table-striped tr:nth-child(even) {
-    @apply bg-blue-300;
+    @apply bg-[#d1d9e4e0];
 }
 
 /* Material Icons */

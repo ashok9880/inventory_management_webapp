@@ -1,26 +1,74 @@
 {
   "users": [
     {
-      "username": "ADMIN",
-      "password": "1234",
+      "username": "QTrak",
+      "password": "123456",
       "designation": "MANAGER",
       "id": "149d"
     },
     {
-      "id": "03f4",
+      "id": "41b5",
       "designation": "BILL PERSON",
-      "username": "BILL PERSON",
-      "password": "321"
+      "username": "Ashok",
+      "password": "654321"
     }
   ],
   "products": [
     {
       "name": "Wireless Mouse",
-      "stock": 100,
-      "price": 250,
-      "sales": 0,
+      "stock": 98,
+      "price": 349,
       "date_added": "2024-01-05",
       "id": "5838"
+    },
+    {
+      "id": "ff07",
+      "name": "SSD - 240 GB",
+      "price": 1385,
+      "stock": 50,
+      "date_added": "2024-12-22"
+    },
+    {
+      "id": "f468",
+      "name": "Monitor FHD",
+      "price": 8999,
+      "stock": 10,
+      "date_added": "2024-12-22"
+    },
+    {
+      "id": "a68d",
+      "name": "Bluetooth Speaker",
+      "price": 1299,
+      "stock": 19,
+      "date_added": "2024-12-22"
+    }
+  ],
+  "bills": [
+    {
+      "id": "7c24",
+      "products": [
+        {
+          "productId": "5838",
+          "price": 349,
+          "currentStock": 100,
+          "quantity": 2,
+          "amount": 698
+        },
+        {
+          "productId": "a68d",
+          "price": 1299,
+          "currentStock": 20,
+          "quantity": 1,
+          "amount": 1299
+        }
+      ],
+      "date": "2024-12-23",
+      "billNo": "2435",
+      "customerName": "abc",
+      "totalQty": 3,
+      "totalAmount": 1997,
+      "createdAt": 1734893863350,
+      "createdBy": "QTrak"
     }
   ]
 }

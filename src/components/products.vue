@@ -4,18 +4,18 @@
   <div class="p-4">
      <div class="grid grid-cols-3 my-4">
         <div class="">
-          <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" v-model="search" placeholder="Search" autocomplete="off" required/>
+          <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" v-model="search" placeholder="Search" autocomplete="off" required/>
         </div>   
 
         <div v-if="loggedUserData.designation == 'MANAGER'" class="col-start-3 text-right">            
-            <button class="btn-sm bg-blue-600 text-white" @click="createProduct()"><span class="material-icons mi-sm">add</span> New Product</button>
+            <button class="btn-sm bg-[#00416ada] text-white" @click="createProduct()"><span class="material-icons mi-sm">add</span> New Product</button>
         </div>
     </div>
 
     <!-- table -->
     <table class="table-striped table-bordered bg-white">
         <thead class="sticky -top-4 z-10 bg-white">
-            <tr class="text-blue-600">
+            <tr class="text-[#00416ada]">
               <th>#</th>
               <th class="cursor-pointer" @click="sortTable('name')">Product Name<span class="material-icons mi-md ml-1">{{ getSortIcon('name') }}</span></th>
               <th class="cursor-pointer" @click="sortTable('price')">Price<span class="material-icons mi-md ml-1">{{ getSortIcon('price') }}</span></th>
@@ -53,22 +53,22 @@
 
       <template #body>
           <label class="block mb-2">Product Name</label>
-          <input v-model="newProduct.name" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+          <input v-model="newProduct.name" type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" required/>
 
           <label class="block mb-2 mt-4">Price</label>
-          <input v-model="newProduct.price" type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+          <input v-model="newProduct.price" type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" required/>
 
           <label class="block mb-2 mt-4">Current Stock</label>
-          <input v-model="newProduct.stock" type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+          <input v-model="newProduct.stock" type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" required/>
           
           <label class="block mb-2 mt-4">Date</label>
-          <input v-model="newProduct.date_added" type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+          <input v-model="newProduct.date_added" type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" required/>
 
       </template>
 
       <template #footer>
-        <button @click="closeModal" type="button" class="btn-sm bg-gray-300 text-gray-700 hover:bg-gray-400">Cancel</button>
-        <button type="submit" class="btn-sm bg-blue-600 text-white hover:bg-blue-700">Save</button>
+        <button @click="closeModal" type="button" class="btn-md bg-gray-300 text-gray-700 hover:bg-gray-400">Cancel</button>
+        <button type="submit" class="btn-md bg-[#00416ada] text-white">Save</button>
       </template>
     </Modal>
   </form>
@@ -79,6 +79,7 @@
 import navBar from './navBar.vue'
 import axios from "axios";
 import Modal from "./ModalComponent.vue";
+import Swal from 'sweetalert2';
 
 export default {
   name: "ProductsPage",
@@ -207,12 +208,25 @@ export default {
       }
     },
     async deleteProduct(item) {
+      const result = await Swal.fire({
+        title: `Are you sure you want to delete the product "${item.name}"?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#898989',
+        confirmButtonText: 'Delete',
+        cancelButtonText: 'Cancel',
+      });
+
+      if (result.isConfirmed) {
         try {
-            await axios.delete(`http://localhost:3000/products/${item.id}`)
-            this.getProducts()
+          await axios.delete(`http://localhost:3000/products/${item.id}`)
+          this.getProducts()
         } catch (err) {
-            console.error(err)
+          console.error(err)
         }
+      }
+             
     }
   },
 };
