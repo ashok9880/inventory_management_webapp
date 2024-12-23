@@ -1,7 +1,7 @@
 <template>
   <div v-if="isOpen" class="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex justify-end">
     
-    <div class="bg-white h-full shadow-lg flex flex-col" :class="widthClass">
+    <div class="bg-white h-full shadow-lg rounded-md flex flex-col" :class="widthClass">
       <!-- Header -->
       <div class="bg-[#00416ada] text-white px-4 py-3 flex justify-between items-center">
         <slot name="header"></slot>

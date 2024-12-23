@@ -10,6 +10,14 @@
     @apply rounded-md py-2 px-3 m-1 hover:bg-none text-base w-fit;
 }
 
+.btn-orange {
+    @apply bg-orange-500 text-white;
+}
+
+.btn-red {
+    @apply bg-red-500 text-white;
+}
+
 /* Table */
 table {
     @apply border-separate border-spacing-0 w-full rounded-lg;
@@ -55,7 +63,7 @@ table {
 }
 
 .table-striped tr:nth-child(even) {
-    @apply bg-[#d1d9e4e0];
+    @apply bg-[#e5e8ece0];
 }
 
 /* Material Icons */
@@ -73,12 +81,4 @@ table {
 
 .mi-md {
     @apply text-lg leading-none;
-}
-
-.mi-lg {
-    @apply text-2xl leading-none;
-}
-
-.mi-xl {
-    @apply text-3xl leading-none;
 }

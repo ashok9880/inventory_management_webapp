@@ -13,8 +13,8 @@
     </div>
 
     <!-- table -->
-    <table class="table-striped table-bordered bg-white">
-        <thead class="sticky -top-4 z-10 bg-white">
+    <table class="table-striped table-bordered">
+        <thead>
             <tr class="text-[#00416ada]">
               <th>#</th>
               <th class="cursor-pointer" @click="sortTable('username')">User Name<span class="material-icons mi-md ml-1">{{ getSortIcon('username') }}</span></th>
@@ -29,8 +29,8 @@
               <td>{{ user.username }}</td>
               <td>{{ user.designation }}</td>
               <td class="w-36 text-center">
-                <button type="button" class="text-sm btn-sm bg-orange-500 text-white" @click="editUser(user)"><span class="material-icons mi-sm">edit</span></button>
-                <button type="button" class="text-sm btn-sm bg-red-500 text-white" @click="deleteUser(user)"><span class="material-icons mi-sm">delete</span></button>
+                <button type="button" class="text-sm btn-sm btn-orange" @click="editUser(user)"><span class="material-icons mi-sm">edit</span></button>
+                <button type="button" class="text-sm btn-sm btn-red" @click="deleteUser(user)"><span class="material-icons mi-sm">delete</span></button>
               </td>
             </tr>
            
@@ -219,6 +219,12 @@ export default {
         try {
           await axios.delete(`http://localhost:3000/users/${item.id}`)
           this.getUsers()
+
+          let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))
+          if(loggedInUser.id === item.id) {
+            localStorage.clear();
+            this.$router.push({name: 'LoginPage'})
+          }
         } catch (err) {
           console.error(err)
         }

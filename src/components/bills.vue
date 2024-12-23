@@ -13,8 +13,8 @@
     </div>
 
     <!-- table -->
-    <table class="table-striped table-bordered bg-white">
-        <thead class="sticky -top-4 z-10 bg-white">
+    <table class="table-striped table-bordered">
+        <thead>
             <tr class="text-[#00416ada]">
               <th>#</th>
               <th class="cursor-pointer" @click="sortTable('date')">Date<span class="material-icons mi-md ml-1">{{ getSortIcon('date') }}</span></th>
@@ -72,8 +72,8 @@
         </div>
         
         <!-- products table -->
-        <table class="table-bordered bg-white">
-            <thead class="sticky -top-4 z-10 bg-white">
+        <table class="table-bordered">
+            <thead>
               <tr class="text-[#00416ada]">
                 <th>#</th>
                 <th>Product Name</th>
@@ -103,8 +103,8 @@
                     </td>
                     <td>{{ prod.amount ?? 0 }}</td>
                     <td v-if="addMode!='VIEW'" class="text-center">
-                        <button type="button" class="text-sm btn-sm bg-orange-500 text-white" @click="addProduct()"><span class="material-icons mi-sm">add</span></button>
-                        <button type="button" class="text-sm btn-sm bg-red-500 text-white" @click="deleteProduct(prod, idx)"><span class="material-icons mi-sm">delete</span></button>
+                        <button type="button" class="text-sm btn-sm btn-orange" @click="addProduct()"><span class="material-icons mi-sm">add</span></button>
+                        <button type="button" class="text-sm btn-sm btn-red" @click="deleteProduct(prod, idx)"><span class="material-icons mi-sm">delete</span></button>
                     </td>
                 </tr>
             </tbody>
@@ -304,11 +304,34 @@ export default {
     },
     async saveBill(e) {
       e.preventDefault()
+      
+      //Duplicate products check
+      let duplicateItem = {}
+      let b_duplicateItemExits = false
+      
+      this.newBill.products.forEach( item => {
+        if (duplicateItem[item.productId]) {
+          b_duplicateItemExits = true
+        }
+        duplicateItem[item.productId] = true                            
+      })
+
+      if (b_duplicateItemExits) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Duplicate Products',
+          text: "Duplicate products found in the bill. Please remove duplicates before saving",
+          confirmButtonText: 'Okay'
+        });
+
+        return;
+      }
 
       this.newBill.createdAt = Date.now()
       this.newBill.createdBy = this.loggedUserData.username
 
       console.log(this.newBill)
+
       //Update product stocks before saving the bill
       await this.updateProductStocks();
 

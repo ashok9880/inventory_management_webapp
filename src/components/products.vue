@@ -13,8 +13,8 @@
     </div>
 
     <!-- table -->
-    <table class="table-striped table-bordered bg-white">
-        <thead class="sticky -top-4 z-10 bg-white">
+    <table class="table-striped table-bordered">
+        <thead>
             <tr class="text-[#00416ada]">
               <th>#</th>
               <th class="cursor-pointer" @click="sortTable('name')">Product Name<span class="material-icons mi-md ml-1">{{ getSortIcon('name') }}</span></th>
@@ -29,12 +29,12 @@
             <tr v-for="(product, idx) in filteredProducts" :key="product.id">
               <td>{{ idx + 1 }}</td>
               <td>{{ product.name }}</td>
-              <td>{{ product.price }}</td>
+              <td>₹ {{ product.price }}</td>
               <td>{{ product.stock }}</td>
               <td>{{ product.date_added }}</td>
               <td v-if="loggedUserData.designation == 'MANAGER'" class="w-36 text-center">
-                <button type="button" class="text-sm btn-sm bg-orange-500 text-white" @click="editProduct(product)"><span class="material-icons mi-sm">edit</span></button>
-                <button type="button" class="text-sm btn-sm bg-red-500 text-white" @click="deleteProduct(product)"><span class="material-icons mi-sm">delete</span></button>
+                <button type="button" class="btn-sm btn-orange" @click="editProduct(product)"><span class="material-icons mi-sm">edit</span></button>
+                <button type="button" class="btn-sm btn-red" @click="deleteProduct(product)"><span class="material-icons mi-sm">delete</span></button>
               </td>
             </tr>
            
@@ -107,7 +107,7 @@ export default {
       this.$router.push({name: 'LoginPage'})
     }
     else {
-        this.loggedUserData = loggedInUser
+      this.loggedUserData = loggedInUser
     }
 
     this.getProducts()
