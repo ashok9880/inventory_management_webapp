@@ -3,13 +3,13 @@
     {
       "id": "c380",
       "designation": "MANAGER",
-      "username": "QTrak",
+      "username": "ABC",
       "password": "123456"
     },
     {
       "id": "333a",
-      "designation": "BILL PERSON",
-      "username": "Ashok",
+      "designation": "STAFF",
+      "username": "XYZ",
       "password": "654321"
     }
   ],
@@ -68,7 +68,7 @@
       "totalQty": 3,
       "totalAmount": 1997,
       "createdAt": 1734893863350,
-      "createdBy": "QTrak"
+      "createdBy": "ABC"
     }
   ]
 }

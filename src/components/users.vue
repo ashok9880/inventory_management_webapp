@@ -60,7 +60,7 @@
         <select v-model="newUser.designation" class="w-full px-4 py-2 mt-4 cursor-pointer border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00416ada]" required>
           <option disabled value="">Select Designation</option>
           <option>MANAGER</option>
-          <option>BILL PERSON</option>
+          <option>STAFF</option>
         </select>
 
       </template>
